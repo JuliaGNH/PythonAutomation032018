@@ -1,0 +1,12 @@
+
+from ciscoconfparse import CiscoConfParse
+
+cisco_cfg = CiscoConfParse("config_file.txt")
+
+crypto_map = cisco_cfg.find_objects(r"^crypto map CRYPTO ")
+
+for i in crypto_map:
+    for child in crypto_map[i].children:
+        print child.text
+
+
